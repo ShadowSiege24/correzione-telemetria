@@ -57,9 +57,12 @@
     array_push($ping_grezzi, 55, 190, 12);
 
     $ping_validi = pacchettiValidi($ping_grezzi);
+    $pacchetti_persi = contaPacchettiPersi($ping_grezzi);
     $tempo_medio = calcolaTempoMedio($ping_validi);
     $ping_max = 0;
     $ping_min = 0;
+
+    calcolaMinMax($ping_validi, $ping_min, $ping_max);
 ?>
 
 
@@ -71,6 +74,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <ul>
+        <li>Totale Rilevazioni: <?= count($ping_grezzi); ?></li>
+        <li>Pacchetti Validi: <?= count($ping_validi); ?></li>
+        <li>Pachetti Persi: <?= $pacchetti_persi; ?></li>
+        <li>Media: <?= $tempo_medio; ?></li>
+        <li>Minimo: <?= $ping_min; ?></li>
+        <li>Massimo: <?= $ping_max; ?></li>
+    </ul>
 </body>
 </html>
