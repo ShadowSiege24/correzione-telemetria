@@ -39,6 +39,17 @@
         return round($media, 2);
     }
     
+
+    function calcolaMinMax($ping_validi, &$ping_min, &$ping_max){
+        $ping_min = $ping_validi[0];
+        $ping_max = $ping_validi[0];
+        
+        foreach ($ping_validi as $ping) {
+            if($ping > $ping_max) $ping_max = $ping;
+            elseif($ping < $ping_min) $ping_min = $ping;
+            
+        }
+    }
     
     
     
@@ -47,6 +58,8 @@
 
     $ping_validi = pacchettiValidi($ping_grezzi);
     $tempo_medio = calcolaTempoMedio($ping_validi);
+    $ping_max = 0;
+    $ping_min = 0;
 ?>
 
 
